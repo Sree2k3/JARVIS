@@ -1,14 +1,26 @@
- $(document).ready(function () {
-    
-    $ ('.text').textillate({
-        loop:true,
-        sync:true,
-        in:{
+$(document).ready(function () {
+
+    $('.text').textillate({
+        loop: true,
+        sync: true,
+        in: {
             effect: "bounceIn",
         },
-        out:{
+        out: {
             effect: "bounceIn",
         },
     })
 
- });
+    //Siri configuration
+
+    var siriWave = new SiriWave({
+        container: document.getElementById("siri-container"),
+        width: 800,
+        height: 200,
+        style: "ios9",
+        speed: 0.3,
+        amplitude: 1,
+        autostart: true
+    });
+
+});
