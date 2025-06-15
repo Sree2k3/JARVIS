@@ -24,15 +24,15 @@ $(document).ready(function () {
     });
 
     //Siri message animation
-    $('.siri-message').textillate({
+    $('.text1').textillate({
         loop: true,
         sync: true,
         in: {
-            effect: "fadeInUp",
+            effect: "fadeIn",
             sync: true,
         },
         out: {
-            effect: "fadeOutUp",
+            effect: "fadeOut",
             sync: true,
         },
 
