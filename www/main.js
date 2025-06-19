@@ -24,26 +24,30 @@ $(document).ready(function () {
     });
 
     //Siri message animation
-    $('.text1').textillate({
+    $('.siri-message').textillate({
         loop: true,
-        sync: true,
         in: {
-            effect: "fadeIn",
-            sync: true,
+            effect: "fadeInUp",
+            delayScale: 1.5
         },
         out: {
-            effect: "fadeOut",
-            sync: true,
-        },
-
+            effect: "fadeOutUp",
+            delayScale: 1.5
+        }
     });
 
     //MicBtn click event
-    $("#MicBtn").click(function () { 
+    $("#MicBtn").click(function () {
         eel.playAssistantSound()
         $("#Oval").attr("hidden", true);
         $("#SiriWave").attr("hidden", false);
-        eel.takecommand();
+        eel.takecommand()((response) => {
+            console.log("Command result:", response);
+            if (!response) {
+                console.log("No response from voice command");
+            }
+        });
+
     });
 
 });

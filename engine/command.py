@@ -1,6 +1,9 @@
 import pyttsx3
 import speech_recognition as sr
 import eel
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, module='pkg_resources')
+
 
 
 def speak(text):
@@ -30,25 +33,30 @@ def takecommand():
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening...")
-        eel.DisplayMessage("Listening...")
+        eel.Displaymessage("Listening...")
+
         r.pause_threshold = 1
         r.adjust_for_ambient_noise(source)
 
         try:
             audio = r.listen(source, timeout=10, phrase_time_limit=6)
-        except Exception as e:
-            print("Microphone Listening Error:", e)
+        except sr.WaitTimeoutError:
+            eel.Displaymessage("Mic timeout, please speak louder.")
+            print("Microphone timeout.")
             return ""
 
         try:
             print("Recognizing...")
-            eel.DisplayMessage("Recognizing...")
+            eel.Displaymessage("Recognizing...")
             query = r.recognize_google(audio, language="en-in")
             print(f"User said: {query}")
-            eel.DisplayMessage(query)
+            eel.Displaymessage(query)
             speak(query)
-            eel.ShowHood()
+            eel.Showhood()
+            return query.lower()
+
         except Exception as e:
+            eel.Displaymessage("Could not recognize speech.")
+            print("Recognition error:", e)
             return ""
 
-        return query.lower()

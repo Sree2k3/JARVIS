@@ -1,19 +1,17 @@
 $(document).ready(function () {
-
     // Display Speak Message
-    eel.expose(DisplayMessage)
-    function DisplayMessage(message) {
-
+    eel.expose(Displaymessage)
+    function Displaymessage(message) {
         $(".siri-message li:first").text(message);
-        $('.siri-message').textillate('start');
-
+        $(".siri-message").textillate('Start');
     }
-
-    // Display Hood
-    eel.expose(ShowHood)
-    function ShowHood() {
-        $("#Oval").attr("hidden", false);
-        $("#SiriWave").attr("hidden", true);
+    // Display hood
+    eel.expose(Showhood)
+    function Showhood() {
+       $("#Oval").attr("hidden", false);
+       $("##Siriwave").attr("hidden", true);
+       
     }
+    
 });
 
